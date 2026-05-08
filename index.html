@@ -604,9 +604,8 @@ function showSuccess(firstName) {
 document.querySelectorAll('input,select,textarea').forEach(el => {
   el.addEventListener('input', () => el.classList.remove('error'));
 });
-</script>
 
-// Add to your website contact form submit handler
+  // Add to your website contact form submit handler
 async function submitContactForm(formData) {
   await fetch('https://4-trac-command-dashboard.vercel.app/api/leads-webhook', {
     method: 'POST',
@@ -628,6 +627,8 @@ async function submitContactForm(formData) {
     })
   });
 }
+  
+</script>
   
 </body>
 </html>
