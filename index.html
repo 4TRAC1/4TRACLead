@@ -606,5 +606,28 @@ document.querySelectorAll('input,select,textarea').forEach(el => {
 });
 </script>
 
+// Add to your website contact form submit handler
+async function submitContactForm(formData) {
+  await fetch('https://4-trac-command-dashboard.vercel.app/api/leads-webhook', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-lead-source': 'website_form',
+      'x-webhook-key': 'YOUR_WEBHOOK_SECRET'
+    },
+    body: JSON.stringify({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service: formData.service,
+      message: formData.message,
+      utm_source: new URLSearchParams(location.search).get('utm_source'),
+      utm_campaign: new URLSearchParams(location.search).get('utm_campaign'),
+      page: location.href
+    })
+  });
+}
+  
 </body>
 </html>
